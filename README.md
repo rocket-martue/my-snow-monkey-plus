@@ -14,6 +14,8 @@ My Snow Monkey プラグインディレクトリへの URL
 
 My Snow Monkey プラグインディレクトリへの ファイルパス
 
+## 機能ごとにファイルを分割管理
+
 ### functions ディレクトリ
 
 /functions ディレクトリの中にある php file は、自動的に読み込まれます。
