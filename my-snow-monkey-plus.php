@@ -26,8 +26,8 @@ define( 'MY_SNOW_MONKEY_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) 
 /**
  * Custom Functions
  * functions ディレクトリの中にある php file を読み込みます。
- * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、インクルードしません。
- * Snow Monkey に依存しないコードは、こちらのディレクトリ
+ * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、読み込みません。
+ * Snow Monkey に依存しないコードは、こちらのディレクトリに配置します。
  */
 $dir = MY_SNOW_MONKEY_PATH .'/functions/';
 if ( ! file_exists( $dir) ) {
@@ -54,8 +54,8 @@ if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->t
 /**
  * Custom Functions
  * inc ディレクトリの中にある php file を読み込みます。
- * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、インクルードしません。
- * Snow Monkey に依存するコードは、こちらのディレクトリ
+ * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、読み込みません。
+ * Snow Monkey に依存するコードは、こちらのディレクトリに配置します。
  */
 $dir = MY_SNOW_MONKEY_PATH .'/inc/';
 if ( ! file_exists( $dir) ) {
