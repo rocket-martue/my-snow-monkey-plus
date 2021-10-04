@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: My Snow Monkey +
- * Description: Snow Monkey 用カスタマイズコード。
+ * Description: Snow Monkey 用カスタマイズコードを管理するプラグインです。
  * Version: 1.0.0
  *
  * @package my-snow-monkey+
