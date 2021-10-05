@@ -1,0 +1,18 @@
+# -----------------------------------------------------------------
+# .gitignore for WordPress My Snow Monkey+
+
+.*
+~*
+__*
+!.gitignore
+
+node_modules/
+package-lock.json
+yarn.lock
+
+/functions/_*
+/functioincns/_*
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
