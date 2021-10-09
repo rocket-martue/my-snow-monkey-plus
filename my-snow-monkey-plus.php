@@ -4,9 +4,13 @@
  * Description: Snow Monkey 用カスタマイズコードを管理するプラグインです。
  * Version: 1.0.0
  *
+ * Author: Rocket Martue
+ * Author URI: https://profiles.wordpress.org/rocketmartue/
+ * License: GPL2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: my-snow-monkey-plus
+ *
  * @package my-snow-monkey+
- * @author Rocket Martue
- * @license GPL-2.0+
  */
 
 /**
