@@ -1,9 +1,12 @@
 <?php
 /**
  * Plugin name: My Snow Monkey +
+ * Plugin URI: https://github.com/rocket-martue/my-snow-monkey-plus
  * Description: Snow Monkey 用カスタマイズコードを管理するプラグインです。
  * Version: 1.0.0
- *
+ * Tested up to: 5.8
+ * Requires at least: 5.8
+ * Requires PHP: 7.4
  * Author: Rocket Martue
  * Author URI: https://profiles.wordpress.org/rocketmartue/
  * License: GPL2 or later
