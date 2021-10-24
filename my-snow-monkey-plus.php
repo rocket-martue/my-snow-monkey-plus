@@ -16,6 +16,8 @@
  * @package my-snow-monkey+
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Directory url of this plugin
  *
@@ -37,9 +39,7 @@ define( 'MY_SNOW_MONKEY_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) 
  * Snow Monkey に依存しないコードは、こちらのディレクトリに配置します。
  */
 $dir = MY_SNOW_MONKEY_PATH .'/functions/';
-if ( ! file_exists( $dir) ) {
-	return;
-} else {
+if ( file_exists( $dir) ) {
 	opendir( $dir );
 	while( ( $file = readdir() ) !== false ) {
 		if( ! is_dir( $file ) && ( strtolower( substr( $file, -4 ) ) == ".php" ) && ( substr( $file, 0, 1 ) != "_" ) ) {
@@ -65,9 +65,7 @@ if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->t
  * Snow Monkey に依存するコードは、こちらのディレクトリに配置します。
  */
 $dir = MY_SNOW_MONKEY_PATH .'/inc/';
-if ( ! file_exists( $dir) ) {
-	return;
-} else {
+if ( file_exists( $dir) ) {
 	opendir( $dir );
 	while( ( $file = readdir() ) !== false ) {
 		if( ! is_dir( $file ) && ( strtolower( substr( $file, -4 ) ) == ".php" ) && ( substr( $file, 0, 1 ) != "_" ) ) {
