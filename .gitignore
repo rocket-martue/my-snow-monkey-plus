@@ -11,7 +11,7 @@ package-lock.json
 yarn.lock
 
 /functions/_*
-/functioincns/_*
+/inc/_*
 
 # ignore OS generated files
 ehthumbs.db
