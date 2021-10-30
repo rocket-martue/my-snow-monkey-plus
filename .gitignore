@@ -4,6 +4,8 @@
 .*
 ~*
 __*
+
+!.github\workflows\*
 !.gitignore
 
 node_modules/
