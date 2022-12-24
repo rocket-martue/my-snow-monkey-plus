@@ -105,17 +105,26 @@ add_filter(
 	4
 );
 
-
 add_filter(
 	'snow_monkey_template_part_render_template-parts/common/page-header',
 	function( $html ) {
 		// img タグを picture + source + img に置換
 		// 779px以下のときは source で指定した画像を表示する
-		// https://placehold.jp/100x100.jpg
 		$sp_img        = '';
 		$sp_img        = SCF::get( 'sp_img' );
 		$sp_header_img = '';
-		if ( is_home() || is_archive('news', 'collection', 'gallary' ) ) {
+		if ( is_page() ) {
+			if ( $sp_img !== '' ) {
+				return preg_replace(
+					'|(<img [^>]+>)|ms',
+					'<picture>
+						<source srcset="'.wp_get_attachment_url( $sp_img ).'" media="(max-width: 779px)">
+						$1
+					</picture>',
+					$html
+				);
+			}
+		} elseif ( is_home() || is_archive( 'news' ) ) {
 			$_post_type = get_post_type();
 			switch ( $_post_type ) {
 				case 'post':
@@ -135,15 +144,6 @@ add_filter(
 					$html
 				);
 			}
-		} elseif ( $sp_img !== '' ) {
-			return preg_replace(
-				'|(<img [^>]+>)|ms',
-				'<picture>
-					<source srcset="'.wp_get_attachment_url( $sp_img ).'" media="(max-width: 779px)">
-					$1
-				</picture>',
-				$html
-			);
 		}
 		return $html;
 	}
