@@ -13,7 +13,7 @@ package-lock.json
 yarn.lock
 
 /functions/_*
-/inc/_*
+/snow-monkey/_*
 
 # ignore OS generated files
 ehthumbs.db
