@@ -60,11 +60,11 @@ if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->t
 
 /**
  * Custom Functions
- * inc ディレクトリの中にある php file を読み込みます。
+ * snow-monkey ディレクトリの中にある php file を読み込みます。
  * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、読み込みません。
  * Snow Monkey に依存するコードは、こちらのディレクトリに配置します。
  */
-$dir = MY_SNOW_MONKEY_PATH .'/inc/';
+$dir = MY_SNOW_MONKEY_PATH .'/snow-monkey/';
 if ( file_exists( $dir) ) {
 	opendir( $dir );
 	while( ( $file = readdir() ) !== false ) {
