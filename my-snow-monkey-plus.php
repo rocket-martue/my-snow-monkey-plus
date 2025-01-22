@@ -33,21 +33,30 @@ define( 'MY_SNOW_MONKEY_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'MY_SNOW_MONKEY_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
 /**
- * Custom Functions
+ * Auto load the php file in the functions directory.
  * functions ディレクトリの中にある php file を読み込みます。
  * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、読み込みません。
  * Snow Monkey に依存しないコードは、こちらのディレクトリに配置します。
  */
-$dir = MY_SNOW_MONKEY_PATH .'/functions/';
-if ( file_exists( $dir) ) {
-	opendir( $dir );
-	while( ( $file = readdir() ) !== false ) {
-		if( ! is_dir( $file ) && ( strtolower( substr( $file, -4 ) ) == ".php" ) && ( substr( $file, 0, 1 ) != "_" ) ) {
-			$load_file = $dir.$file;
+
+$dir_functions = MY_SNOW_MONKEY_PATH . '/functions/';
+if ( ! file_exists( $dir_functions ) ) {
+	return;
+}
+
+$handle = opendir( $dir_functions );
+if ( false !== $handle ) {
+	while ( true ) {
+		$file = readdir( $handle );
+		if ( false === $file ) {
+			break;
+		}
+		if ( ! is_dir( $dir_functions . $file ) && '.php' === strtolower( substr( $file, -4 ) ) && '_' !== substr( $file, 0, 1 ) ) {
+			$load_file = $dir_functions . $file;
 			require_once( $load_file );
 		}
 	}
-	closedir();
+	closedir( $handle );
 }
 
 /**
@@ -59,19 +68,27 @@ if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->t
 }
 
 /**
- * Custom Functions
+ * Auto load the php file in the snow-monkey directory.
  * snow-monkey ディレクトリの中にある php file を読み込みます。
  * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、読み込みません。
  * Snow Monkey に依存するコードは、こちらのディレクトリに配置します。
  */
-$dir = MY_SNOW_MONKEY_PATH .'/snow-monkey/';
-if ( file_exists( $dir) ) {
-	opendir( $dir );
-	while( ( $file = readdir() ) !== false ) {
-		if( ! is_dir( $file ) && ( strtolower( substr( $file, -4 ) ) == ".php" ) && ( substr( $file, 0, 1 ) != "_" ) ) {
-			$load_file = $dir.$file;
+$dir_snow_monkey = MY_SNOW_MONKEY_PATH . '/snow-monkey/';
+if ( ! file_exists( $dir_snow_monkey ) ) {
+	return;
+}
+
+$handle = opendir( $dir_snow_monkey );
+if ( false !== $handle ) {
+	while ( true ) {
+		$file = readdir( $handle );
+		if ( false === $file ) {
+			break;
+		}
+		if ( ! is_dir( $dir_snow_monkey . $file ) && '.php' === strtolower( substr( $file, -4 ) ) && '_' !== substr( $file, 0, 1 ) ) {
+			$load_file = $dir_snow_monkey . $file;
 			require_once( $load_file );
 		}
 	}
-	closedir();
+	closedir( $handle );
 }
