@@ -11,6 +11,7 @@ __*
 node_modules/
 package-lock.json
 yarn.lock
+phpcs.xml
 
 /functions/_*
 /snow-monkey/_*
