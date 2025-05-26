@@ -3,8 +3,8 @@
  * Plugin name: My Snow Monkey +
  * Plugin URI: https://github.com/rocket-martue/my-snow-monkey-plus
  * Description: Snow Monkey 用カスタマイズコードを管理するプラグインです。
- * Version: 1.0.0
- * Tested up to: 5.8
+ * Version: 1.0.1
+ * Tested up to: 6.8
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author: Rocket Martue
@@ -53,7 +53,7 @@ if ( false !== $handle ) {
 		}
 		if ( ! is_dir( $dir_functions . $file ) && '.php' === strtolower( substr( $file, -4 ) ) && '_' !== substr( $file, 0, 1 ) ) {
 			$load_file = $dir_functions . $file;
-			require_once( $load_file );
+			require_once $load_file;
 		}
 	}
 	closedir( $handle );
@@ -87,7 +87,7 @@ if ( false !== $handle ) {
 		}
 		if ( ! is_dir( $dir_snow_monkey . $file ) && '.php' === strtolower( substr( $file, -4 ) ) && '_' !== substr( $file, 0, 1 ) ) {
 			$load_file = $dir_snow_monkey . $file;
-			require_once( $load_file );
+			require_once $load_file;
 		}
 	}
 	closedir( $handle );
