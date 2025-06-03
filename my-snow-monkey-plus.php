@@ -32,63 +32,37 @@ define( 'MY_SNOW_MONKEY_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
  */
 define( 'MY_SNOW_MONKEY_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
+// Require main class
+require_once MY_SNOW_MONKEY_PATH . '/includes/class-my-snow-monkey-plus.php';
+
 /**
- * Auto load the php file in the functions directory.
+ * Auto load helper function (Deprecated: Use My_Snow_Monkey_Plus::auto_load() instead)
+ *
+ * @param string $directory Directory path to load PHP files from.
+ */
+function my_snow_monkey_auto_load( $directory ) {
+	My_Snow_Monkey_Plus::auto_load( $directory );
+}
+
+/**
+ * Auto load the PHP files.
  * functions ディレクトリの中にある php file を読み込みます。
  * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、読み込みません。
  * Snow Monkey に依存しないコードは、こちらのディレクトリに配置します。
  */
-
-$dir_functions = MY_SNOW_MONKEY_PATH . '/functions/';
-if ( ! file_exists( $dir_functions ) ) {
-	return;
-}
-
-$handle = opendir( $dir_functions );
-if ( false !== $handle ) {
-	while ( true ) {
-		$file = readdir( $handle );
-		if ( false === $file ) {
-			break;
-		}
-		if ( ! is_dir( $dir_functions . $file ) && '.php' === strtolower( substr( $file, -4 ) ) && '_' !== substr( $file, 0, 1 ) ) {
-			$load_file = $dir_functions . $file;
-			require_once $load_file;
-		}
-	}
-	closedir( $handle );
-}
+My_Snow_Monkey_Plus::auto_load( MY_SNOW_MONKEY_PATH . '/functions/' );
 
 /**
  * Snow Monkey 以外のテーマを利用している場合は有効化してもカスタマイズが反映されないようにする
  */
-$theme = wp_get_theme( get_template() );
-if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
+if ( ! My_Snow_Monkey_Plus::get_instance()->is_snow_monkey_active() ) {
 	return;
 }
 
 /**
- * Auto load the php file in the snow-monkey directory.
+ * Auto load the PHP files.
  * snow-monkey ディレクトリの中にある php file を読み込みます。
  * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、読み込みません。
  * Snow Monkey に依存するコードは、こちらのディレクトリに配置します。
  */
-$dir_snow_monkey = MY_SNOW_MONKEY_PATH . '/snow-monkey/';
-if ( ! file_exists( $dir_snow_monkey ) ) {
-	return;
-}
-
-$handle = opendir( $dir_snow_monkey );
-if ( false !== $handle ) {
-	while ( true ) {
-		$file = readdir( $handle );
-		if ( false === $file ) {
-			break;
-		}
-		if ( ! is_dir( $dir_snow_monkey . $file ) && '.php' === strtolower( substr( $file, -4 ) ) && '_' !== substr( $file, 0, 1 ) ) {
-			$load_file = $dir_snow_monkey . $file;
-			require_once $load_file;
-		}
-	}
-	closedir( $handle );
-}
+My_Snow_Monkey_Plus::auto_load( MY_SNOW_MONKEY_PATH . '/snow-monkey/' );
