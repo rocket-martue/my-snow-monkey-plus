@@ -4,6 +4,8 @@
 .*
 ~*
 __*
+-*
+!--*
 
 !.github\workflows\*
 !.gitignore
@@ -12,9 +14,7 @@ node_modules/
 package-lock.json
 yarn.lock
 
-/functions/--*
-/snow-monkey/--*
-
 # ignore OS generated files
 ehthumbs.db
 Thumbs.db
+.DS_Store
