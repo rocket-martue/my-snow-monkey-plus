@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+/* 2column at PC */
+@media screen and (min-width: 1024px) {
+	.p-archive .c-entries--simple {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+	.c-entries--simple .c-entry-summary__figure {
+		width: 36%;
+	}
+}
