@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+@use "variables" as *;
+@use "block-style";
+
+.editor-styles-wrapper {
+	// Import block styles for editor
+	@include block-style.editor-styles();
+
+	// カスタマイザー　追加CSSから転記
+}
