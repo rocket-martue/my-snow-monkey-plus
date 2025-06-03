@@ -12,8 +12,8 @@ node_modules/
 package-lock.json
 yarn.lock
 
-/functions/_*
-/snow-monkey/_*
+/functions/--*
+/snow-monkey/--*
 
 # ignore OS generated files
 ehthumbs.db

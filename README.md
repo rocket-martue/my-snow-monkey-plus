@@ -55,7 +55,7 @@ require_once MY_SNOW_MONKEY_PATH . '/includes/helper-functions.php';
 ### functions ディレクトリ
 
 `/functions` ディレクトリの中にある PHP ファイルは、自動的に読み込まれます。
-その際、ファイル名がアンダースコアで始まるもの（例：`_example.php`）は、読み込まれません。
+その際、ファイル名がハイフン2つで始まるもの（例：`--example.php`）は、読み込まれません。
 
 **✅ 配置するコード:**
 - テーマに依存しない汎用的なカスタマイズ
@@ -65,7 +65,7 @@ require_once MY_SNOW_MONKEY_PATH . '/includes/helper-functions.php';
 ### snow-monkey ディレクトリ
 
 `/snow-monkey` ディレクトリの中にある PHP ファイルは、Snow Monkey テーマが有効な場合のみ自動的に読み込まれます。
-その際、ファイル名がアンダースコアで始まるもの（例：`_example.php`）は、読み込まれません。
+その際、ファイル名がハイフン2つで始まるもの（例：`--example.php`）は、読み込まれません。
 
 **✅ 配置するコード:**
 - Snow Monkey テーマ専用のカスタマイズ
@@ -118,7 +118,7 @@ Snow Monkey テーマ以外が有効になっている場合：
 ### ファイル命名規則
 
 - **有効なファイル**: `feature-name.php`
-- **無効なファイル**: `_disabled-feature.php` (アンダースコア開始)
+- **無効なファイル**: `--disabled-feature.php` (ハイフン2つ開始)
 
 ### コード配置の判断
 

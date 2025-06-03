@@ -19,6 +19,13 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Plugin version
+ *
+ * @var string
+ */
+define( 'MY_SNOW_MONKEY_VERSION', '1.0.1' );
+
+/**
  * Directory url of this plugin
  *
  * @var string
@@ -47,7 +54,7 @@ function my_snow_monkey_auto_load( $directory ) {
 /**
  * Auto load the PHP files.
  * functions ディレクトリの中にある php file を読み込みます。
- * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、読み込みません。
+ * その際、ファイル名がハイフン2つで始まるもの（例：--example.php）は、読み込みません。
  * Snow Monkey に依存しないコードは、こちらのディレクトリに配置します。
  */
 My_Snow_Monkey_Plus::auto_load( MY_SNOW_MONKEY_PATH . '/functions/' );
@@ -62,7 +69,7 @@ if ( ! My_Snow_Monkey_Plus::get_instance()->is_snow_monkey_active() ) {
 /**
  * Auto load the PHP files.
  * snow-monkey ディレクトリの中にある php file を読み込みます。
- * その際、ファイル名がアンダースコアで始まるもの（例：_example.php）は、読み込みません。
+ * その際、ファイル名がハイフン2つで始まるもの（例：--example.php）は、読み込みません。
  * Snow Monkey に依存するコードは、こちらのディレクトリに配置します。
  */
 My_Snow_Monkey_Plus::auto_load( MY_SNOW_MONKEY_PATH . '/snow-monkey/' );
