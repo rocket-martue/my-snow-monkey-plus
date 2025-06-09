@@ -120,11 +120,10 @@ class My_Snow_Monkey_Plus {
 		}
 
 		$php_files = glob( $directory . '*.php' );
-
 		foreach ( $php_files as $file ) {
 			$filename = basename( $file );
-			// Skip files that start with double hyphens
-			if ( '--' === substr( $filename, 0, 2 ) ) {
+			// Skip files that start with hyphen
+			if ( '-' === substr( $filename, 0, 1 ) ) {
 				continue;
 			}
 			require_once $file;
