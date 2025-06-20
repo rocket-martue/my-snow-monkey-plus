@@ -43,8 +43,8 @@ class My_Snow_Monkey_Plus {
 	 * Initialize plugin
 	 */
 	private function init() {
-		add_action( 'init', array( $this, 'load_textdomain' ), 10 );
 		add_action( 'init', array( $this, 'load_plugin_files' ), 5 );  // 早めに実行
+		add_action( 'init', array( $this, 'load_textdomain' ), 10 );
 		add_action( 'init', array( $this, 'check_theme_support' ), 15 ); // 遅めに実行
 	}
 
