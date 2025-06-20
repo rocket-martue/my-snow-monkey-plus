@@ -3,7 +3,7 @@
  * Plugin name: My Snow Monkey +
  * Plugin URI: https://github.com/rocket-martue/my-snow-monkey-plus
  * Description: Snow Monkey 用カスタマイズコードを管理するプラグインです。
- * Version: 1.0.1
+ * Version: 1.0.2
  * Tested up to: 6.8
  * Requires at least: 5.8
  * Requires PHP: 7.4
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @var string
  */
-define( 'MY_SNOW_MONKEY_VERSION', '1.0.1' );
+define( 'MY_SNOW_MONKEY_VERSION', '1.0.2' );
 
 /**
  * Directory url of this plugin
@@ -51,25 +51,5 @@ function my_snow_monkey_auto_load( $directory ) {
 	My_Snow_Monkey_Plus::auto_load( $directory );
 }
 
-/**
- * Auto load the PHP files.
- * functions ディレクトリの中にある php file を読み込みます。
- * その際、ファイル名がハイフンで始まるもの（例：-example.php）は、読み込みません。
- * Snow Monkey に依存しないコードは、こちらのディレクトリに配置します。
- */
-My_Snow_Monkey_Plus::auto_load( MY_SNOW_MONKEY_PATH . '/functions/' );
-
-/**
- * Snow Monkey 以外のテーマを利用している場合は有効化してもカスタマイズが反映されないようにする
- */
-if ( ! My_Snow_Monkey_Plus::get_instance()->is_snow_monkey_active() ) {
-	return;
-}
-
-/**
- * Auto load the PHP files.
- * snow-monkey ディレクトリの中にある php file を読み込みます。
- * その際、ファイル名がハイフンで始まるもの（例：-example.php）は、読み込みません。
- * Snow Monkey に依存するコードは、こちらのディレクトリに配置します。
- */
-My_Snow_Monkey_Plus::auto_load( MY_SNOW_MONKEY_PATH . '/snow-monkey/' );
+// Note: Plugin files are now loaded via init hook in the main class
+// This prevents translation loading issues in WordPress 6.7.0+

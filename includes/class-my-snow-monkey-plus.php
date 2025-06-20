@@ -32,7 +32,6 @@ class My_Snow_Monkey_Plus {
 		}
 		return self::$instance;
 	}
-
 	/**
 	 * Constructor
 	 */
@@ -44,8 +43,9 @@ class My_Snow_Monkey_Plus {
 	 * Initialize plugin
 	 */
 	private function init() {
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
-		add_action( 'init', array( $this, 'check_theme_support' ) );
+		add_action( 'init', array( $this, 'load_textdomain' ), 10 );
+		add_action( 'init', array( $this, 'load_plugin_files' ), 5 );  // 早めに実行
+		add_action( 'init', array( $this, 'check_theme_support' ), 15 ); // 遅めに実行
 	}
 
 	/**
@@ -55,18 +55,30 @@ class My_Snow_Monkey_Plus {
 		load_plugin_textdomain(
 			'my-snow-monkey-plus',
 			false,
-			dirname( plugin_basename( __FILE__ ) ) . '/languages'
+			plugin_basename( MY_SNOW_MONKEY_PATH ) . '/languages'
 		);
 	}
-
 	/**
 	 * Check if Snow Monkey theme is active
 	 *
 	 * @return bool
 	 */
 	public function is_snow_monkey_active() {
-		$theme = wp_get_theme( get_template() );
-		return in_array( $theme->template, array( 'snow-monkey', 'snow-monkey/resources' ), true );
+		$template = get_template();
+
+		// Check if current theme is Snow Monkey
+		if ( 'snow-monkey' === $template ) {
+			return true;
+		}
+
+		// Check theme name (for cases where template directory might be different)
+		$current_theme = wp_get_theme();
+		$theme_name    = strtolower( $current_theme->get( 'Name' ) );
+		if ( false !== strpos( $theme_name, 'snow monkey' ) || false !== strpos( $theme_name, 'snow-monkey' ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -90,6 +102,7 @@ class My_Snow_Monkey_Plus {
 		</div>
 		<?php
 	}
+
 	/**
 	 * Get plugin version
 	 *
@@ -105,10 +118,10 @@ class My_Snow_Monkey_Plus {
 		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-
 		$plugin_data = get_plugin_data( MY_SNOW_MONKEY_PATH . '/my-snow-monkey-plus.php' );
-		return $plugin_data['Version'] ?? '1.0.1';
+		return $plugin_data['Version'] ?? '1.0.2';
 	}
+
 	/**
 	 * Auto load PHP files from directory
 	 *
@@ -127,6 +140,24 @@ class My_Snow_Monkey_Plus {
 				continue;
 			}
 			require_once $file;
+		}
+	}
+	/**
+	 * Load plugin files
+	 */
+	public function load_plugin_files() {
+		// Always load functions directory files (Snow Monkey independent)
+		$functions_path = MY_SNOW_MONKEY_PATH . '/functions/';
+		if ( is_dir( $functions_path ) ) {
+			self::auto_load( $functions_path );
+		}
+
+		// Load snow-monkey directory files only if Snow Monkey theme is active
+		if ( $this->is_snow_monkey_active() ) {
+			$snow_monkey_path = MY_SNOW_MONKEY_PATH . '/snow-monkey/';
+			if ( is_dir( $snow_monkey_path ) ) {
+				self::auto_load( $snow_monkey_path );
+			}
 		}
 	}
 }
