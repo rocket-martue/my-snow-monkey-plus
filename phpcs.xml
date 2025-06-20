@@ -18,6 +18,9 @@
 		<!-- コメントの末尾にピリオド無し可 -->
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
 
+		<!-- パラメータコメントの末尾ピリオド無し可 -->
+		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
+
 		<!-- Short Array Syntax [] 使用可 -->
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
 
