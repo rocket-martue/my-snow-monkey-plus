@@ -13,13 +13,13 @@ add_action(
 	function () {
 		wp_enqueue_style(
 			'my-snow-monkey',
-			MY_SNOW_MONKEY_URL . '/src/css/style.css',
+			MY_SNOW_MONKEY_URL . '/assets/css/style.css',
 			array(
 				Framework\Helper::get_main_style_handle(),
 				Framework\Helper::get_main_style_handle() . '-blocks',
 				Framework\Helper::get_main_style_handle() . '-block-library',
 			),
-			filemtime( MY_SNOW_MONKEY_PATH . '/src/css/style.css' )
+			filemtime( MY_SNOW_MONKEY_PATH . '/assets/css/style.css' )
 		);
 
 		// Google Fonts example (uncomment if needed):
@@ -33,12 +33,12 @@ add_action(
 	function () {
 		wp_enqueue_style(
 			'my-snow-monkey-editor',
-			MY_SNOW_MONKEY_URL . '/src/css/editor-style.css',
+			MY_SNOW_MONKEY_URL . '/assets/css/editor-style.css',
 			array(
 				Framework\Helper::get_main_style_handle(),
 				'wp-edit-blocks',
 			),
-			filemtime( MY_SNOW_MONKEY_PATH . '/src/css/editor-style.css' )
+			filemtime( MY_SNOW_MONKEY_PATH . '/assets/css/editor-style.css' )
 		);
 	}
 );

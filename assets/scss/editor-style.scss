@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+@forward "variables";
+@use "block-style";
+
+.editor-styles-wrapper {
+	body {
+		font-family: var(--font-family);
+		font-size: var(--font-size-base);
+		line-height: 2;
+		color: var(--text-color);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: 900;
+		line-height: 1.25;
+	}
+
+	h2 {
+		font-size: var(--font-size-xxl);
+	}
+	h3 {
+		font-size: var(--font-size-xl);
+	}
+	h4 {
+		font-size: var(--font-size-lg);
+	}
+	h5 {
+		font-size: var(--font-size-md);
+	}
+	h6 {
+		font-size: var(--font-size-base);
+	}
+
+	.c-page-header__title {
+		color: var(--color-primary-dark);
+	}
+	// Import block styles for editor
+	@include block-style.editor-styles();
+
+	// カスタマイザー　追加CSSから転記
+}
