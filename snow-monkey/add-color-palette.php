@@ -1,12 +1,13 @@
 <?php
 /**
- * Snow Monkeyテーマのカラーパレットを追加する
+ * カスタムカラーパレットの設定
  *
  * @package my-snow-monkey+
  */
 
 /**
- * Snow Monkeyテーマのカラーパレットを追加する
+ * Snow Monkeyテーマのカラーパレットにカスタムカラーを追加する
+ * Core のデフォルトカラーパレットを非表示にする
  *
  * @param object $theme_json テーマJSONオブジェクト.
  * @return object 更新されたテーマJSONオブジェクト.
@@ -21,53 +22,58 @@ add_filter(
 		$add_color_palette = array(
 			array(
 				'slug'  => 'color-01',
-				'color' => '#343434',
-				'name'  => 'charcoal',
+				'color' => '#f3f3ec',
+				'name'  => 'background',
 			),
 			array(
 				'slug'  => 'color-02',
-				'color' => '#696969',
-				'name'  => 'grey1',
+				'color' => '#2073e5',
+				'name'  => 'primary',
 			),
 			array(
 				'slug'  => 'color-03',
-				'color' => '#E3E3DF',
-				'name'  => 'grey2',
+				'color' => '#ce3c1b',
+				'name'  => 'accent',
 			),
 			array(
 				'slug'  => 'color-04',
-				'color' => '#8BB8A3',
-				'name'  => 'green',
+				'color' => '#e7ddae',
+				'name'  => 'sand',
 			),
 			array(
 				'slug'  => 'color-05',
-				'color' => '#B05F5F',
-				'name'  => 'red',
+				'color' => '#303228',
+				'name'  => 'text-body',
 			),
 			array(
 				'slug'  => 'color-06',
-				'color' => '#D87B7B',
-				'name'  => 'red2',
+				'color' => '#6b6f5d',
+				'name'  => 'gray',
 			),
 			array(
 				'slug'  => 'color-07',
-				'color' => '#CFB9B9',
-				'name'  => 'pink',
+				'color' => '#265f93',
+				'name'  => 'dark-blue',
 			),
 			array(
 				'slug'  => 'color-08',
-				'color' => '#E3D6D6',
-				'name'  => 'pink2',
+				'color' => '#2c6b22',
+				'name'  => 'dark-green',
 			),
 			array(
 				'slug'  => 'color-09',
-				'color' => '#BCAB80',
-				'name'  => 'yellow',
+				'color' => '#286aa8',
+				'name'  => 'grade-high',
 			),
 			array(
 				'slug'  => 'color-10',
-				'color' => '#E2DEBC',
-				'name'  => 'yellow2',
+				'color' => '#c34563',
+				'name'  => 'grade-low',
+			),
+			array(
+				'slug'  => 'color-11',
+				'color' => '#2f8521',
+				'name'  => 'grade-middle',
 			),
 		);
 
@@ -82,7 +88,8 @@ add_filter(
 			'version'  => 2,
 			'settings' => array(
 				'color' => array(
-					'palette' => $new_color_palette,
+					'palette'        => $new_color_palette,
+					'defaultPalette' => false,
 				),
 			),
 		);
