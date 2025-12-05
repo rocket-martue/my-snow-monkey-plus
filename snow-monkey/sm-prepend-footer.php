@@ -1,6 +1,6 @@
 <?php
 /**
- * Snow Monkeyテーマのフッターをカスタマイズする
+ * ブロックで作成した同期パターンをフッターに表示する
  *
  * @package my-snow-monkey+
  */
