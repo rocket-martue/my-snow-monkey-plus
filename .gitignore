@@ -17,3 +17,5 @@ yarn.lock
 ehthumbs.db
 Thumbs.db
 .DS_Store
+
+docs/
