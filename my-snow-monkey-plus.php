@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @var string
  */
-define( 'MY_SNOW_MONKEY_VERSION', '1.0.2' );
+define( 'MY_SNOW_MONKEY_VERSION', '1.0.3' );
 
 /**
  * Directory url of this plugin
