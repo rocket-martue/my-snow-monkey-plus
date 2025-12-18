@@ -8,6 +8,7 @@ __*
 
 !.github\workflows\*
 !.gitignore
+!.gitattributes
 
 node_modules/
 package-lock.json
