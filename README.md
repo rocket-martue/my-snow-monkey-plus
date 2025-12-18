@@ -28,7 +28,14 @@ my-snow-monkey-plus/
 │   └── class-my-snow-monkey-plus.php
 ├── functions/                  # テーマ非依存のカスタマイズ
 ├── snow-monkey/               # Snow Monkey テーマ専用のカスタマイズ
-├── src/                       # リソースファイル
+│   ├── add-color-palette.php      # カラーパレット追加
+│   ├── block-styles.php           # ブロックスタイル登録
+│   ├── enqueue-scripts.php        # スクリプト・スタイル読み込み
+│   ├── global-nav.php             # グローバルナビカスタマイズ
+│   ├── lang-switch.php            # 言語切り替え機能
+│   ├── sm-prepend-footer.php      # フッター前コンテンツ
+│   └── smb-block-category-order.php # ブロックカテゴリー順序
+├── assets/                    # リソースファイル
 │   ├── css/                   # コンパイル済みCSS
 │   ├── scss/                  # SCSSソースファイル
 │   ├── js/                    # JavaScript
@@ -46,7 +53,7 @@ My Snow Monkey プラグインディレクトリへの URL
 
 ```php
 // 使用例
-wp_enqueue_style( 'custom-style', MY_SNOW_MONKEY_URL . '/src/css/style.css' );
+wp_enqueue_style( 'custom-style', MY_SNOW_MONKEY_URL . '/assets/css/style.css' );
 ```
 
 ### MY_SNOW_MONKEY_PATH
@@ -80,6 +87,18 @@ require_once MY_SNOW_MONKEY_PATH . '/includes/helper-functions.php';
 - Snow Monkey のフックやフィルターを使用する機能
 - テーマ固有のブロックスタイルやカラーパレット
 
+**📄 含まれるファイル:**
+
+| ファイル | 説明 |
+|---------|------|
+| `add-color-palette.php` | theme.json にカスタムカラーを追加し、デフォルトカラーを非表示に設定 |
+| `block-styles.php` | 見出し・段落などのカスタムブロックスタイルを登録 |
+| `enqueue-scripts.php` | フロント・エディター用のCSS/JSを読み込み |
+| `global-nav.php` | 特定ページでグローバルナビを別メニューに切り替え |
+| `lang-switch.php` | Polylang の言語スイッチを Snow Monkey に表示 |
+| `sm-prepend-footer.php` | フッター前にコンテンツを挿入 |
+| `smb-block-category-order.php` | ブロックインサーターで Snow Monkey Blocks を最上部に表示 |
+
 ### includes ディレクトリ
 
 プラグインの中核となるクラスファイルを配置します。
@@ -92,7 +111,7 @@ require_once MY_SNOW_MONKEY_PATH . '/includes/helper-functions.php';
 ### 構造
 
 ```
-src/scss/
+assets/scss/
 ├── _variables.scss      # CSS カスタムプロパティ（色定義など）
 ├── _common.scss         # 共通スタイル
 ├── _block-style.scss    # ブロックスタイル（mixin + 直接出力）
@@ -137,6 +156,18 @@ Snow Monkey テーマ以外が有効になっている場合：
 | 共通ユーティリティ | `includes/` | ヘルパークラス、共通関数 |
 
 ## 📋 Version History
+
+### Version 1.0.3
+
+- **ディレクトリ構造の変更**: `src/` を `assets/` にリネーム
+- **snow-monkey 機能追加**:
+  - ブロックインサーターで Snow Monkey Blocks を最上部に表示
+  - Polylang 言語スイッチ機能を追加（contactページでは非表示）
+  - 特定ページでグローバルナビを別メニューに切り替え
+  - フッター前にRBUIパターンを表示する機能
+  - カラーパレット更新、デフォルトパレットを非表示に設定
+- **コード品質向上**: 改行コードをLFに統一、サンプルコードを削除
+- **ドキュメント強化**: README更新、各ファイルの詳細説明を追加
 
 ### Version 1.0.2
 
