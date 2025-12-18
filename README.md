@@ -115,6 +115,7 @@ assets/scss/
 ├── _variables.scss      # CSS カスタムプロパティ（色定義など）
 ├── _common.scss         # 共通スタイル
 ├── _block-style.scss    # ブロックスタイル（mixin + 直接出力）
+├── _polylang.scss       # Polylang 言語スイッチ用スタイル
 ├── style.scss          # フロント用エントリーポイント
 └── editor-style.scss   # エディター用エントリーポイント
 ```
